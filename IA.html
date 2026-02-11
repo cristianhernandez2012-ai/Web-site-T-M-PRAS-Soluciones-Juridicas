@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html class="light" lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+    <meta name="theme-color" content="#00121f" media="(prefers-color-scheme: dark)">
+    <title>T&amp;M PRAS - Abogados</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700;800;900&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#0020E6",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#0a0c10",
+                    },
+                    fontFamily: {
+                        "display": ["Public Sans", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+    <style type="text/tailwindcss">
+        :root {
+            --primary-color: #0020E6;
+        }
+        body {
+            font-family: "Public Sans", sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .vibrant-blue-bg {
+            background-color: var(--primary-color);
+        }
+        /* Glass button styles — adjusted for stronger contrast */
+        .glass-btn {
+            background: rgba(255, 255, 255, 0.20);
+            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 24, 40, 0.06);
+            box-shadow: 0 8px 24px rgba(2, 6, 23, 0.12);
+            color: rgba(17, 19, 24, 0.95);
+            transition: transform .18s ease, box-shadow .18s ease, background-color .18s ease;
+        }
+        .glass-btn--primary {
+            background: linear-gradient(180deg, #0020E6 0%, #0016B3 100%);
+            border: 1px solid rgba(0,32,230,0.9);
+            color: #ffffff;
+            text-shadow: 0 1px 0 rgba(0,0,0,0.12);
+            box-shadow: 0 12px 34px rgba(0,32,230,0.18), 0 2px 6px rgba(0,0,0,0.12);
+        }
+        .glass-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 40px rgba(2,6,23,0.16), 0 8px 28px rgba(0,32,230,0.12);
+        }
+        .glass-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 6px 16px rgba(2,6,23,0.12);
+        }
+        .dark .glass-btn {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.06);
+            color: #e6eefc;
+            box-shadow: 0 8px 24px rgba(2,6,23,0.24);
+        }
+        .dark .glass-btn--primary {
+            background: linear-gradient(180deg, #0020E6 0%, #0016B3 100%);
+            border: 1px solid rgba(0,32,230,0.9);
+            color: #ffffff;
+            box-shadow: 0 14px 40px rgba(0,32,230,0.22), 0 2px 8px rgba(0,0,0,0.18);
+        }
+
+        /* Mobile & dark-mode optimizations */
+        .glass-btn:focus-visible {
+            outline: 3px solid rgba(0,32,230,0.18);
+            outline-offset: 2px;
+            border-radius: 12px;
+        }
+
+        /* Prefer user's system dark-scheme if available (helps first-load on mobile) */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background-color: #0a0c10;
+                color: #e6eefc;
+            }
+            .glass-btn {
+                background: rgba(255,255,255,0.06);
+                border: 1px solid rgba(255,255,255,0.06);
+                color: #e6eefc;
+                box-shadow: 0 8px 24px rgba(2,6,23,0.24);
+            }
+            .glass-btn--primary {
+                background: linear-gradient(180deg, #0020E6 0%, #0016B3 100%);
+                border: 1px solid rgba(0,32,230,0.9);
+                color: #ffffff;
+            }
+        }
+
+        /* Reduce heavy effects & increase tappable area on small screens */
+        @media (max-width: 640px) {
+            .glass-btn, .glass-btn--primary {
+                min-height: 48px;
+                padding-left: 16px;
+                padding-right: 16px;
+                width: 100%;
+                display: inline-flex;
+                justify-content: center;
+                font-size: 16px;
+                border-radius: 12px;
+            }
+            .glass-btn {
+                -webkit-backdrop-filter: blur(6px);
+                backdrop-filter: blur(6px);
+                box-shadow: 0 6px 16px rgba(0,0,0,0.10);
+            }
+            .glass-btn--primary {
+                box-shadow: 0 8px 20px rgba(0,32,230,0.14);
+            }
+            /* Make header button slightly smaller on mobile to fit UI */
+            .sticky .glass-btn--primary {
+                padding-left: 12px;
+                padding-right: 12px;
+                height: 44px;
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-white dark:bg-background-dark text-[#111318] dark:text-white antialiased">
+    <div
+        class="sticky top-0 z-50 w-full bg-white/95 dark:bg-background-dark/95 backdrop-blur-md border-b border-[#f0f2f4] dark:border-white/10">
+        <div class="max-w-[1280px] mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <a href="/" class="flex items-center gap-3">
+                    <img src="assets/logo.svg" alt="T&amp;M PRAS logo" class="h-8 w-auto">
+                    <h2 class="text-xl font-black leading-tight tracking-tight uppercase">T&amp;M PRAS</h2>
+                </a>
+            </div>
+                <div class="hidden md:flex items-center gap-10">
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="index2.html#practice-areas">Tus Derechos</a>
+                <a class="text-sm font-semibold hover:text-primary transition-colors" href="IA.html#mission">Misión</a>
+
+                <a href="index2.html#agendar" class="flex items-center justify-center glass-btn glass-btn--primary text-sm font-bold h-11 px-6 rounded-lg transition-all transform active:scale-95 text-center" role="button">Consulta</a>
+            </div>
+        </div>
+    </div>
+    <main class="max-w-[1280px] mx-auto overflow-x-hidden">
+        <section class="px-6 lg:px-10 py-16 md:py-24">
+            <div class="@container">
+                <div class="flex flex-col gap-12 lg:flex-row lg:items-center">
+                    <div class="flex flex-col gap-8 lg:w-1/2">
+                        <div class="flex flex-col gap-4">
+                            <span class="text-primary font-bold text-sm tracking-[0.2em] uppercase">Democratizando el
+                                acceso a la justicia</span>
+                            <h1
+                                class="text-[#111318] dark:text-white text-5xl md:text-7xl font-black leading-[1.1] tracking-[-0.04em]">
+                                Tus derechos <span class="text-primary text-balance">son nuestra
+                                    prioridad</span>
+                            </h1>
+                            <p
+                                class="text-[#111318] dark:text-gray-400 text-lg md:text-xl font-normal leading-relaxed max-w-[540px]">
+                                Acompañamos a víctimas de accidentes laborales y trabajadores que buscan justicia. En
+                                T&amp;M PRAS, empoderamos a las personas frente a las injusticias del trabajo y las
+                                deudas.
+                            </p>
+                        </div>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="/agendar" class="flex items-center justify-center glass-btn glass-btn--primary text-base font-bold h-14 px-10 rounded-lg transition-all" role="button">Agendar Consulta</a>
+                        </div>
+                    </div>
+                    <div class="lg:w-1/2 relative mt-10 lg:mt-0 lg:pl-12">
+
+                        <!-- Marco exterior (padding visual premium) -->
+                        <div class="p-4 md:p-6 rounded-[2.5rem] bg-white/70 backdrop-blur-sm ring-1 ring-black/5">
+
+                            <!-- Card de la imagen -->
+                            <div class="w-full aspect-[4/5] rounded-2xl shadow-2xl relative overflow-hidden bg-cover bg-no-repeat bg-[50%_15%]         transition-transform duration-700 ease-outhover:scale-[1.02]"
+                                style='background-image: url("Imagen1.png");'>
+
+                                <!-- Degradado inferior para legibilidad -->
+                                <div
+                                    class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent">
+                                </div>
+
+                                <!-- Borde sutil interno -->
+                                <div class="absolute inset-0 ring-1 ring-white/20"></div>
+
+                                <!-- Texto sobre la imagen -->
+                                <div
+                                    class="absolute bottom-6 md:bottom-10 left-6 md:left-10 right-6 md:right-10 text-white">
+
+                                    <p class="text-xs font-bold tracking-[0.3em] uppercase opacity-90 mb-2">
+                                        Defensa Humana y Profesional
+                                    </p>
+
+                                    <p class="text-3xl font-black tracking-tight mb-1">
+                                        Tu voz ante la ley
+                                    </p>
+
+                                    <div class="h-1.5 w-16 bg-white rounded-full"></div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </div>
+        </section>
+        <section id="mission" class="px-6 lg:px-10 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div
+                    class="flex flex-col gap-3 rounded-2xl p-8 border border-[#dbdfe6] dark:border-white/10 bg-white dark:bg-white/5 hover:border-primary/50 transition-colors group">
+                    <p class="text-[#616f89] dark:text-gray-400 text-sm font-bold uppercase tracking-widest">Compromiso
+                    </p>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">groups</span>
+                        <p class="text-primary dark:text-primary text-3xl font-black">Cercanía</p>
+                    </div>
+                    <p class="text-[#616f89] text-sm">Somos una firma joven que habla tu idioma, enfocada en
+                        democratizar el derecho para todos.</p>
+                </div>
+                <div
+                    class="flex flex-col gap-3 rounded-2xl p-8 border border-[#dbdfe6] dark:border-white/10 bg-white dark:bg-white/5 hover:border-primary/50 transition-colors group">
+                    <p class="text-[#616f89] dark:text-gray-400 text-sm font-bold uppercase tracking-widest">Justicia
+                        Social</p>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">balance</span>
+                        <p class="text-primary dark:text-primary text-3xl font-black">Igualdad</p>
+                    </div>
+                    <p class="text-[#616f89] text-sm">Luchamos para que cada trabajador, sin importar su cargo, reciba
+                        la indemnización que merece.</p>
+                </div>
+                <div
+                    class="flex flex-col gap-3 rounded-2xl p-8 border border-[#dbdfe6] dark:border-white/10 bg-white dark:bg-white/5 hover:border-primary/50 transition-colors group">
+                    <p class="text-[#616f89] dark:text-gray-400 text-sm font-bold uppercase tracking-widest">
+                        Empoderamiento</p>
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary">person_celebrate</span>
+                        <p class="text-primary dark:text-primary text-3xl font-black">Libertad</p>
+                    </div>
+                    <p class="text-[#616f89] text-sm">Te ayudamos a liberarte de deudas insostenibles para que puedas
+                        empezar de nuevo.</p>
+                </div>
+            </div>
+        </section>
+        <section class="px-6 lg:px-10 pt-20 pb-4" id="practice-areas">
+            <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+                <div class="max-w-[600px]">
+                    <span class="text-primary font-bold text-sm tracking-widest uppercase mb-2 block">Cómo te
+                        ayudamos</span>
+                    <h2
+                        class="text-[#111318] dark:text-white text-4xl md:text-5xl font-black tracking-tight leading-tight">
+                        Soluciones para Personas</h2>
+                </div>
+                <p class="text-[#616f89] dark:text-gray-400 text-lg max-w-[400px]">
+                    No estás solo. Nuestra misión es poner el poder de la ley en tus manos con un enfoque moderno y
+                    solidario.
+                </p>
+            </div>
+        </section>
+        <section class="px-6 lg:px-10 py-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div
+                    class="group flex flex-col gap-6 rounded-2xl border border-[#dbdfe6] dark:border-white/10 bg-white dark:bg-white/5 p-8 hover:bg-primary transition-all duration-300">
+                    <div
+                        class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary">
+                        <span class="material-symbols-outlined !text-3xl">savings</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-[#111318] dark:text-white text-xl font-bold group-hover:text-white">Adiós a las
+                            Deudas</h2>
+                        <p
+                            class="text-[#616f89] dark:text-gray-400 text-base font-normal leading-normal group-hover:text-white/80">
+                            Ley de Segunda Oportunidad para que familias e individuos recuperen su tranquilidad
+                            financiera.</p>
+                    </div>
+                </div>
+                <div
+                    class="group flex flex-col gap-6 rounded-2xl border-2 border-primary bg-primary/5 dark:bg-primary/10 p-8 hover:bg-primary transition-all duration-300 shadow-lg shadow-primary/10">
+                    <div
+                        class="size-12 rounded-xl bg-primary flex items-center justify-center text-white group-hover:bg-white group-hover:text-primary">
+                        <span class="material-symbols-outlined !text-3xl">personal_injury</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-[#111318] dark:text-white text-xl font-bold group-hover:text-white">Accidentes
+                            Laborales</h2>
+                        <p
+                            class="text-[#616f89] dark:text-gray-300 text-base font-normal leading-normal group-hover:text-white/80">
+                            Protección total y reclamación de indemnizaciones justas para víctimas en el lugar de
+                            trabajo.</p>
+                    </div>
+                </div>
+                <div
+                    class="group flex flex-col gap-6 rounded-2xl border border-[#dbdfe6] dark:border-white/10 bg-white dark:bg-white/5 p-8 hover:bg-primary transition-all duration-300">
+                    <div
+                        class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary">
+                        <span class="material-symbols-outlined !text-3xl">work_history</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-[#111318] dark:text-white text-xl font-bold group-hover:text-white">Despidos e
+                            Impagos</h2>
+                        <p
+                            class="text-[#616f89] dark:text-gray-400 text-base font-normal leading-normal group-hover:text-white/80">
+                            Defensa frente a despidos injustificados, reclamación de salarios y finiquitos no pagados.
+                        </p>
+                    </div>
+                </div>
+                <div
+                    class="group flex flex-col gap-6 rounded-2xl border border-[#dbdfe6] dark:border-white/10 bg-white dark:bg-white/5 p-8 hover:bg-primary transition-all duration-300">
+                    <div
+                        class="size-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary group-hover:bg-white group-hover:text-primary">
+                        <span class="material-symbols-outlined !text-3xl">handshake</span>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-[#111318] dark:text-white text-xl font-bold group-hover:text-white">Acoso y
+                            Derechos</h2>
+                        <p
+                            class="text-[#616f89] dark:text-gray-400 text-base font-normal leading-normal group-hover:text-white/80">
+                            Protegemos tu dignidad y salud mental frente al mobbing y la discriminación laboral.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="flex flex-col gap-6">
+            <h3 class="font-bold text-sm uppercase tracking-widest text-primary">Enlaces Rápidos</h3>
+            <nav class="flex flex-col gap-3">
+                <a class="text-sm text-[#616f89] dark:text-gray-400 hover:text-primary transition-colors"
+                    href="#">Nuestros Valores</a>
+                <a class="text-sm text-[#616f89] dark:text-gray-400 hover:text-primary transition-colors"
+                    href="#">Segunda Oportunidad</a>
+                <a class="text-sm text-[#616f89] dark:text-gray-400 hover:text-primary transition-colors"
+                    href="#">Accidentes Laborales</a>
+                <a class="text-sm text-[#616f89] dark:text-gray-400 hover:text-primary transition-colors"
+                    href="#">Protección al Trabajador</a>
+            </nav>
+        </div>
+
+        <div
+            class="pt-8 border-t border-[#f0f2f4] dark:border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+            <p class="text-xs text-[#616f89] dark:text-gray-500">© 2024 T&amp;M PRAS Soluciones Jurídicas. Justicia
+                para el Trabajador.</p>
+            <div class="flex items-center gap-6">
+                <span class="text-xs text-[#616f89] flex items-center gap-2">
+                    <span class="material-symbols-outlined !text-sm">language</span> Español (ES)
+                </span>
+                <button class="text-xs font-bold text-primary hover:underline">Volver arriba</button>
+            </div>
+        </div>
+        </footer>
+    </main>
+
+</body>
+
+</html>
